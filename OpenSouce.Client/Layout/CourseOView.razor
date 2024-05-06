@@ -1,0 +1,43 @@
+﻿@inject HttpClient http
+@inherits LayoutComponentBase
+<head>
+<link href="/css/courseoview.css" rel="stylesheet" />
+</head>
+@foreach (var x in course)
+{
+    <div class="card" style="width: 200px;">
+        <img src="@x.CourseImg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">@x.CourseName</h5>
+            <p class="card-text">@x.CourseDescription</p>
+            <a style="text-align:center" href="/home/videos">@x.CoursePrice</a>
+        </div>
+    </div>
+}
+<br />
+<iframe id="chatboxIframe" width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/f94e6213-daf1-443c-84fd-a0e303891271" style="display: none;"></iframe>
+<button id="openChatboxButton">Mở Chatbox</button>
+<GGtranslate />
+
+<script>
+    document.getElementById('openChatboxButton').addEventListener('click', function () {
+        document.getElementById('chatboxIframe').style.display = 'block';
+    });
+
+    document.addEventListener('click', function (event) {
+        var chatbox = document.getElementById('chatboxIframe');
+        var openButton = document.getElementById('openChatboxButton');
+        if (!chatbox.contains(event.target) && !openButton.contains(event.target)) {
+            chatbox.style.display = 'none';
+        }
+    });
+</script>
+@code {
+    List<Course> course = new List<Course>();
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await http.GetFromJsonAsync<List<Course>>("api/courses");
+        if (result is not null)
+            course = result;
+    }
+}

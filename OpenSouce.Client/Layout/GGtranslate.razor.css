@@ -364,3 +364,62 @@ body {
             transform: rotate(90deg);
         }
 }
+
+
+#openChatbox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--primary-text-color);
+    transition: transform 0.2s ease-in-out;
+}
+
+    #openChatbox:hover {
+        transform: scale(1.1);
+    }
+
+.chatbox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px; /* Giảm chiều rộng chatbox */
+    background-color: var(--light-bg-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Ẩn chatbox ban đầu */
+    z-index: 10;
+}
+
+    /* Sửa lại kích thước các phần tử trong chatbox */
+    .chatbox .container {
+        flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+    }
+
+    .chatbox .card {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .chatbox textarea {
+        font-size: 14px; /* Giảm cỡ chữ trong textarea */
+    }
+
+    .chatbox .dropdown-container {
+        width: 100%;
+    }
+
+    .chatbox .dropdown-menu {
+        width: 100%;
+        height: 200px; /* Giảm chiều cao dropdown */
+    }

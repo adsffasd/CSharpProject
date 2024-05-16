@@ -219,6 +219,7 @@ body {
     cursor: pointer;
     color: var(--primary-text-color);
     transition: transform 0.2s ease-in-out;
+    z-index: 100; /* Đảm bảo nút hiển thị trên cùng */
 }
 
     #openChatbox:hover {
@@ -229,11 +230,17 @@ body {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 300px;
+    width: 250px; /* Giảm chiều rộng chatbox */
     background-color: var(--light-bg-color);
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: none;
+    display: none; /* Ẩn chatbox ban đầu */
     z-index: 10;
 }
+
+    .chatbox textarea {
+        width: 100%; /* Điều chỉnh chiều rộng textarea */
+        height: 40px; /* Điều chỉnh chiều cao textarea */
+    }
+
